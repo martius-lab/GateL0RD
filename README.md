@@ -8,7 +8,7 @@ Generic example using `GateL0RD`:
 ```python
 from gatel0rd import GateL0RD
 #...
-model = GateL0RD(input_size=input_dim, output_size = output_dim, hidden_size=args.latent_dim, reg_lambda=args.reg_lambda)
+model = GateL0RD(input_size=input_dim, output_size=output_dim, hidden_size=args.latent_dim, reg_lambda=args.lambda)
 optimizer = optim.Adam(model.parameters(), lr=args.lr) # optimizer of your choice
 # ...
 for X,Y in training_data:
