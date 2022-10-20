@@ -124,13 +124,13 @@ class GateL0RDCell(nn.Module):
         :param h_tminus1: tensor of last latent state (Default: initialized by zeros)
         :return: rnn output y_t, hidden states h_t, tensor of regularized gatings \Theta(\Lambda_t)
         """
-        assert len(x_t.shape) == 2 and len(h_tminus1.shape) == 2, "Wrong input dimensionality in GateL0RDCell: " + str(
-            x_t.shape) + " and " + str(h_tminus1.shape)
+        assert len(x_t.shape) == 2, "Wrong input dimensionality of x_t in GateL0RDCell: " + str(x_t.shape)
         batch_size, layer_input_size = x_t.size()
 
         if h_tminus1 is None:
             h_tminus1 = torch.zeros((batch_size, self.hidden_size), device=self.device)
         else:
+            assert len(h_tminus1.shape) == 2, "Wrong input dimensionality of h_tminus1 in GateL0RDCell: " + str(h_tminus1.shape)
             assert h_tminus1.shape[1] == self.hidden_size
 
         # Input to g and r-network is the current input plus the last latent state
