@@ -61,9 +61,8 @@ class GateL0RDCell(nn.Module):
         self.hidden_size = hidden_size
 
         if output_size == -1:
-            self.output_size = hidden_size
-        else:
-            self.output_size = output_size
+            output_size = hidden_size
+        self.output_size = output_size
 
         input_size_gates = input_size + hidden_size
 
@@ -216,9 +215,8 @@ class GateL0RD(torch.nn.Module):
         self.hidden_size = hidden_size
 
         if output_size == -1:
-            self.output_size = hidden_size
-        else:
-            self.output_size = output_size
+            output_size = hidden_size
+        self.output_size = output_size
 
         self.cell = GateL0RDCell(input_size=input_size, output_size=output_size, hidden_size=hidden_size,
                                  num_layers_internal=num_layers_internal, gate_noise_level=gate_noise_level,
